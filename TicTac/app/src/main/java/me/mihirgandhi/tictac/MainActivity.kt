@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +33,8 @@ class MainActivity : AppCompatActivity() {
             b8.id -> cellId = 8
             b9.id -> cellId = 9
         }
-        playGame(cellId, buttonClicked)
+
+         playGame(cellId, buttonClicked)
     }
 
      fun playGame(cellId:Int, button: Button){
@@ -42,12 +44,100 @@ class MainActivity : AppCompatActivity() {
            button.isEnabled = false
            currentPlayer = 2
            player1.add(cellId)
+           findWinner()
        }else{
            button.text = "O"
            button.setBackgroundColor(Color.RED)
            button.isEnabled = false
            currentPlayer = 1
            player2.add(cellId)
+           findWinner()
        }
    }
+
+    fun findWinner(){
+        if (player1.contains(1) && player1.contains(2) && player1.contains(3)){
+            Toast.makeText(this,"Playaer 1 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+        if (player2.contains(1) && player2.contains(2) && player2.contains(3)){
+            disableAllBs()
+            Toast.makeText(this,"Playaer 2 wins",Toast.LENGTH_LONG).show()
+        }
+
+        if (player1.contains(4) && player1.contains(5) && player1.contains(6)){
+            disableAllBs()
+            Toast.makeText(this,"Playaer 1 wins",Toast.LENGTH_LONG).show()
+        }
+        if (player2.contains(4) && player2.contains(5) && player2.contains(6)){
+            Toast.makeText(this,"Playaer 2 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+
+        if (player1.contains(7) && player1.contains(8) && player1.contains(9)){
+            Toast.makeText(this,"Playaer 1 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+        if (player2.contains(7) && player2.contains(8) && player2.contains(9)){
+            Toast.makeText(this,"Playaer 2 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+
+        if (player1.contains(1) && player1.contains(4) && player1.contains(7)){
+            Toast.makeText(this,"Playaer 1 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+        if (player2.contains(1) && player2.contains(4) && player2.contains(7)){
+            Toast.makeText(this,"Playaer 2 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+
+        if (player1.contains(2) && player1.contains(5) && player1.contains(8)){
+            Toast.makeText(this,"Playaer 1 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+        if (player2.contains(2) && player2.contains(5) && player2.contains(8)){
+            Toast.makeText(this,"Playaer 2 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+
+        if (player1.contains(3) && player1.contains(6) && player1.contains(9)){
+            Toast.makeText(this,"Playaer 1 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+        if (player2.contains(3) && player2.contains(6) && player2.contains(9)){
+            Toast.makeText(this,"Playaer 2 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+
+        if (player1.contains(1) && player1.contains(5) && player1.contains(9)){
+            Toast.makeText(this,"Playaer 1 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+        if (player2.contains(1) && player2.contains(5) && player2.contains(9)){
+            Toast.makeText(this,"Playaer 2 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+
+        if (player1.contains(3) && player1.contains(5) && player1.contains(7)){
+            Toast.makeText(this,"Playaer 1 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+        if (player2.contains(3) && player2.contains(5) && player2.contains(7)){
+            Toast.makeText(this,"Playaer 2 wins",Toast.LENGTH_LONG).show()
+            disableAllBs()
+        }
+    }
+
+    fun disableAllBs(){
+        b1.isEnabled = false
+        b2.isEnabled = false
+        b3.isEnabled = false
+        b4.isEnabled = false
+        b5.isEnabled = false
+        b6.isEnabled = false
+        b7.isEnabled = false
+        b8.isEnabled = false
+        b9.isEnabled = false
+    }
 }
